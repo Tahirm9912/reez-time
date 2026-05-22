@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REEZ WATCHES — The Fine Art of Time</title>
+    
+
+
+    <style>
+        /* --- Luxury Typography --- */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@100;300;400;500&display=swap');
+
+        :root {
+            --bg-dark: #060606;
+            --gold-primary: #dfba6b;
+            --gold-secondary: #ad8f4f;
+            --gold-muted: rgba(223, 186, 107, 0.15);
+            --text-light: #f5f5f7;
+            --text-dark: #86868b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Ambient Lighting Effects (Luxury Vignette) --- */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 150vw;
+            height: 150vh;
+            top: -25vh;
+            left: -25vw;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(223, 186, 107, 0.04) 0%, rgba(0,0,0,0) 50%),
+                radial-gradient(circle at 50% 30%, rgba(255,255,255,0.01) 0%, rgba(0,0,0,0) 40%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(223, 186, 107, 0.06) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(40px);
+            z-index: 2;
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+
+        /* --- Header: Premium Branding --- */
+        header {
+            z-index: 10;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInDown 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .brand-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 0.5em;
+            text-indent: 0.5em;
+            background: linear-gradient(180deg, #ffffff 30%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .brand-subtitle {
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.9em;
+            text-indent: 0.9em;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            margin-top: 0.8rem;
+        }
+
+        /* --- Centerpiece: The Kinetic Horizon --- */
+        .hero-gallery {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        /* Rotating Ribbon Engine */
+        .kinetic-ribbon {
+            position: absolute;
+            font-weight: 100;
+            font-size: 1.5rem;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+            width: 200%;
+            pointer-events: none;
+        }
+
+        .ribbon-top {
+            transform: rotate(-12deg) translateY(-40px);
+            animation: trackLeft 25s linear infinite;
+        }
+
+        .ribbon-bottom {
+            -webkit-text-stroke: 1px var(--gold-muted);
+            transform: rotate(12deg) translateY(40px);
+            animation: trackRight 30s linear infinite;
+        }
+
+        /* The Exhibition Luxury Watch Concept */
+        .timepiece-core {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #16161a 0%, #0d0d11 100%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            position: relative;
+            z-index: 6;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                inset 0 2px 5px rgba(255, 255, 255, 0.05),
+                0 0 40px rgba(223, 186, 107, 0.03);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timepiece-core:hover {
+            transform: scale(1.03) rotate(2deg);
+        }
+
+        /* Luxury Dial Accents */
+        .dial-bezel {
+            position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-muted);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+        }
+
+        .dial-crown-pin {
+            position: absolute;
+            right: -6px;
+            top: calc(50% - 8px);
+            width: 8px;
+            height: 16px;
+            background: linear-gradient(to bottom, var(--gold-secondary), var(--gold-primary), var(--gold-secondary));
+            border-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Minimal Luxury Watch Hands */
+        .hand {
+            position: absolute;
+            background: linear-gradient(to top, var(--gold-secondary), var(--gold-primary));
+            transform-origin: bottom center;
+            bottom: 50%;
+            left: calc(50% - 1px);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            /* Transition added for smooth load-in position sync */
+            transition: transform 0.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
+        .hand-h {
+            width: 3.5px;
+            height: 48px;
+        }
+
+        .hand-m {
+            width: 2px;
+            height: 72px;
+        }
+
+        /* Premium ultra-thin sweep second hand */
+        .hand-s {
+            width: 1px;
+            height: 82px;
+            background: #ffffff;
+            left: 50%;
+            box-shadow: none;
+        }
+
+        .center-axis {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid var(--gold-secondary);
+            z-index: 10;
+        }
+
+        /* Minimal Tick Marks */
+        .tick {
+            position: absolute;
+            width: 1px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            top: 12px;
+            left: calc(50% - 0.5px);
+            transform-origin: center 98px;
+        }
+        .t-12 { transform: rotate(0deg); background: var(--gold-primary); width: 2px; }
+        .t-3  { transform: rotate(90deg); }
+        .t-6  { transform: rotate(180deg); }
+        .t-9  { transform: rotate(270deg); }
+
+        /* --- Footer: Minimal Action & Copy --- */
+        footer {
+            z-index: 10;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        .teaser-statement {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            line-height: 1.8;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+
+        .teaser-statement span {
+            color: var(--gold-primary);
+            font-weight: 500;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 0;
+            transition: border-color 0.4s ease;
+        }
+
+        .input-group:focus-within {
+            border-color: var(--gold-primary);
+        }
+
+        .input-field {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            width: 100%;
+            padding-right: 2rem;
+        }
+
+        .input-field::placeholder {
+            color: #444446;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+        }
+
+        .action-submit {
+            background: transparent;
+            border: none;
+            outline: none;
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .action-submit svg {
+            stroke: var(--gold-primary);
+            transition: stroke 0.3s, transform 0.3s;
+        }
+
+        .action-submit:hover svg {
+            stroke: #ffffff;
+            transform: translateX(4px);
+        }
+
+        /* --- Animations Suite --- */
+        @keyframes trackLeft {
+            0% { transform: rotate(-12deg) translateX(0%); }
+            100% { transform: rotate(-12deg) translateX(-50%); }
+        }
+
+        @keyframes trackRight {
+            0% { transform: rotate(12deg) translateX(-50%); }
+            100% { transform: rotate(12deg) translateX(0%); }
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.6; width: 450px; }
+            100% { opacity: 1; width: 550px; }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        @media (max-width: 600px) {
+            .brand-title { font-size: 2.2rem; }
+            .brand-subtitle { letter-spacing: 0.6em; }
+            .timepiece-core { width: 180px; height: 180px; }
+            .tick { transform-origin: center 78px; }
+            .hand-h { height: 38px; }
+            .hand-m { height: 58px; }
+            .hand-s { height: 66px; }
+            .kinetic-ribbon { font-size: 1.1rem; }
+            .hero-gallery { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <header>
+        <div class="brand-wrap">
+            <h1 class="brand-title">REEZ</h1>
+            <p class="brand-subtitle">Horology</p>
+        </div>
+    </header>
+
+    <main class="hero-gallery">
+        <div class="kinetic-ribbon ribbon-top">
+            COMING SOON &bull; PRESTIGE &bull; COMING SOON &bull; LUXURY &bull; COMING SOON &bull; CHRONO &bull; 
+        </div>
+
+        <div class="timepiece-core">
+            <div class="dial-bezel"></div>
+            <div class="dial-crown-pin"></div>
+            
+            <div class="tick t-12"></div>
+            <div class="tick t-3"></div>
+            <div class="tick t-6"></div>
+            <div class="tick t-9"></div>
+
+            <div id="hour-hand" class="hand hand-h"></div>
+            <div id="min-hand" class="hand hand-m"></div>
+            <div id="sec-hand" class="hand hand-s"></div>
+            <div class="center-axis"></div>
+        </div>
+
+        <div class="kinetic-ribbon ribbon-bottom">
+            COMING SOON &bull; TIMELESS &bull; COMING SOON &bull; HERITAGE &bull; COMING SOON &bull; AVANT-GARDE &bull;
+        </div>
+    </main>
+
+    <footer>
+        <p class="teaser-statement">Something extraordinary is ticking behind the scenes. <br>Join us for the <span>Grand Unveiling</span>.</p>
+        
+        <form class="input-group" action="#" method="POST" onsubmit="event.preventDefault(); alert('Welcome to REEZ elite club. Secrets will follow.');">
+            <input type="email" class="input-field" placeholder="Request Early Access" required autocomplete="off">
+            <button type="submit" class="action-submit" aria-label="Submit Email">
+                <svg width="20" height="12" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 7H23M23 7L17 1M23 7L17 13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </form>
+    </footer>
+
+    <script>
+        const hourHand = document.getElementById('hour-hand');
+        const minHand = document.getElementById('min-hand');
+        const secHand = document.getElementById('sec-hand');
+
+        function updateTimepiece() {
+            const now = new Date();
+            
+            const seconds = now.getSeconds();
+            const milliseconds = now.getMilliseconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+
+            // Calculate fractional positions for hyper-smooth automatic movement
+            // Smooth sweeping seconds
+            const totalSeconds = seconds + (milliseconds / 1000);
+            const secDegrees = (totalSeconds * 6); 
+
+            // Minute hand shifts slightly as seconds tick past
+            const totalMinutes = minutes + (totalSeconds / 60);
+            const minDegrees = (totalMinutes * 6); 
+
+            // Hour hand moves incrementally as minutes pass
+            const totalHours = (hours % 12) + (totalMinutes / 60);
+            const hourDegrees = (totalHours * 30); 
+
+            // Execute placement updates
+            secHand.style.transform = `rotate(${secDegrees}deg)`;
+            minHand.style.transform = `rotate(${minDegrees}deg)`;
+            hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+        }
+
+        // Run immediately to sync instantly on page load
+        updateTimepiece();
+        
+        // Remove structural load transition after first render to prevent sweeping lags
+        setTimeout(() => {
+            hourHand.style.transition = 'none';
+            minHand.style.transition = 'none';
+            secHand.style.transition = 'none';
+        }, 600);
+
+        // Update movement frame smoothly (~60fps) using requestAnimationFrame
+        function engineLoop() {
+            updateTimepiece();
+            requestAnimationFrame(engineLoop);
+        }
+        requestAnimationFrame(engineLoop);
+    </script>
+</body>
+</html>
